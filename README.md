@@ -1,16 +1,103 @@
-# React + Vite
+# React Routing + Context + Redux Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React application demonstrating routing, dynamic route parameters, theme management via Context API, global state handling with Redux Toolkit, and API data fetching using Redux Thunk.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+* Page routing using `react-router-dom`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+  * `/` (Home)
+  * `/dashboard`
+  * `/products`
+  * `/products/:id` (dynamic product page)
+* Redirect from Home to Dashboard if the user is logged in
+* Light/Dark theme using `useContext`
+* Global counter using Redux Toolkit
+* API data fetching and caching using Redux Thunk
+* Minimal UI with navbar and product listing
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+* React
+* Vite
+* React Router DOM
+* Redux Toolkit
+* Redux Thunk
+* Context API
+
+---
+
+## Installation
+
+```bash
+npm install
+npm run dev
+```
+
+App runs by default on:
+
+```
+http://localhost:5173
+```
+
+---
+
+## Scripts
+
+| Command           | Action                   |
+| ----------------- | ------------------------ |
+| `npm run dev`     | Start development server |
+| `npm run build`   | Build for production     |
+| `npm run preview` | Preview production build |
+
+---
+
+## Project Structure
+
+```
+src
+├─ components
+│  ├─ Navbar.jsx
+│  ├─ CounterControls.jsx
+│  └─ ProductList.jsx
+├─ context
+│  └─ ThemeContext.jsx
+├─ pages
+│  ├─ Home.jsx
+│  ├─ Dashboard.jsx
+│  ├─ Products.jsx
+│  └─ ProductDetails.jsx
+├─ redux
+│  ├─ store.js
+│  ├─ counterSlice.js
+│  ├─ productsSlice.js
+│  └─ authSlice.js
+├─ App.jsx
+├─ main.jsx
+└─ index.css
+```
+
+---
+
+## API Used
+
+Products are fetched from:
+
+```
+https://fakestoreapi.com/products
+```
+
+Data is stored in Redux using an asynchronous thunk.
+
+---
+
+## Notes
+
+* Login is simulated (no real authentication)
+* Theme toggle and Login toggle are in the navbar
+* Counter state is global and displayed in Navbar + Dashboard
+* Product details page works even after page refresh due to refetch logic
