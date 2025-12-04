@@ -79,6 +79,26 @@ body {
   font-size: 0.85rem;
 }
 
+/* Light theme button styles */
+.theme-light .nav-btn {
+  color: #0d3b66;
+  border-color: #0d3b66;
+}
+
+.theme-light .nav-btn:hover {
+  background: rgba(13, 59, 102, 0.12);
+}
+
+/* Dark theme button styles */
+.theme-dark .nav-btn {
+  color: #cfe2ff;
+  border-color: #cfe2ff;
+}
+
+.theme-dark .nav-btn:hover {
+  background: rgba(207, 226, 255, 0.15);
+}
+
 .nav-login-btn {
   font-weight: 600;
 }

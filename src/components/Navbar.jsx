@@ -45,7 +45,7 @@ function Navbar() {
       </div>
 
       <div className="nav-right">
-        <span className="nav-counter">Counter: {counterValue}</span>
+        <span className="nav-counter">Counter : {counterValue}</span>
 
         <button onClick={toggleTheme} className="nav-btn">
           Theme: {theme === "light" ? "Light" : "Dark"}

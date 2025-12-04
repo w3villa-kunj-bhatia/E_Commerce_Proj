@@ -1,4 +1,3 @@
-// src/components/ProductList.jsx
 import { Link } from "react-router-dom";
 
 function ProductList({ products }) {
@@ -14,14 +13,12 @@ function ProductList({ products }) {
           to={`/products/${product.id}`}
           className="product-card"
         >
-          {/* IMAGE */}
           <img
-            src={product.image} // IMPORTANT: property name is "image"
+            src={product.image} 
             alt={product.title}
             className="product-image"
           />
 
-          {/* TEXT */}
           <h3>{product.title}</h3>
           <p>${product.price}</p>
         </Link>
