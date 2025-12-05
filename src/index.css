@@ -177,3 +177,65 @@ body {
 .product-details-info {
   max-width: 500px;
 }
+
+/* Forms and Login Page Styles */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.login-form-card {
+  max-height: 500px;
+  max-width: 400px;
+  width: 100%;
+  padding: 2rem;
+  text-align: left;
+}
+
+.login-form h1 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 8px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  color: inherit;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.theme-dark .form-group input,
+.theme-dark .form-group select {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.form-submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.theme-dark .card {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.theme-light .card {
+  background-color: rgba(255, 255, 255, 0.8);
+}

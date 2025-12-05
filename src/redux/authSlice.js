@@ -4,19 +4,21 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     isLoggedIn: false,
+    username: null, // New state to store username
   },
   reducers: {
-    login(state) {
+    setUserDataAndLogin(state, action) {
+      // New action for login with data
       state.isLoggedIn = true;
+      state.username = action.payload.username;
     },
     logout(state) {
       state.isLoggedIn = false;
+      state.username = null; // Clear username on logout
     },
-    toggleLogin(state) {
-      state.isLoggedIn = !state.isLoggedIn;
-    },
+    // Removed toggleLogin, as the Navbar handles navigation/logout now
   },
 });
 
-export const { login, logout, toggleLogin } = authSlice.actions;
+export const { setUserDataAndLogin, logout } = authSlice.actions;
 export default authSlice.reducer;
