@@ -1,0 +1,53 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 2rem;
+  width: 100%;
+}
+
+.loginFormCard {
+  max-width: 400px;
+  width: 100%;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.loginForm h1 {
+  text-align: center;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.formGroup input,
+.formGroup select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  color: inherit;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Theme-dependent input styles using :global() */
+:global(.theme-dark) .formGroup input,
+:global(.theme-dark) .formGroup select {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.formSubmitBtn {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+}

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../redux/productsSlice.js";
+import styles from "./ProductDetails.module.css";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -37,14 +38,14 @@ function ProductDetails() {
     <div>
       <h1>Product Details</h1>
 
-      <div className="product-details">
+      <div className={styles.productDetails}>
         <img
           src={product.image}
           alt={product.title}
-          className="product-details-image"
+          className={styles.productDetailsImage}
         />
 
-        <div className="product-details-info">
+        <div className={styles.productDetailsInfo}>
           <h2>{product.title}</h2>
           <p>
             <strong>Price:</strong> ${product.price}

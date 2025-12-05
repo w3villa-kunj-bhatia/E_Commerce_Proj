@@ -16,7 +16,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.username = null; // Clear username on logout
     },
-    // Removed toggleLogin, as the Navbar handles navigation/logout now
+    // Removed toggleLogin
   },
 });
 

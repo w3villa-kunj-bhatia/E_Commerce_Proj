@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import styles from "./ProductList.module.css";
 
 function ProductList({ products }) {
   if (!products || products.length === 0) {
@@ -6,17 +7,17 @@ function ProductList({ products }) {
   }
 
   return (
-    <div className="product-grid">
+    <div className={styles.productGrid}>
       {products.map((product) => (
         <Link
           key={product.id}
           to={`/products/${product.id}`}
-          className="product-card"
+          className={styles.productCard}
         >
           <img
-            src={product.image} 
+            src={product.image}
             alt={product.title}
-            className="product-image"
+            className={styles.productImage}
           />
 
           <h3>{product.title}</h3>

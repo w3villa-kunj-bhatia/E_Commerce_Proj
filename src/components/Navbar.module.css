@@ -1,0 +1,71 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+}
+
+.navLeft,
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navLogo {
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+  margin-right: 1rem;
+}
+
+.navLink {
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.7;
+}
+
+.navLinkActive {
+  opacity: 1;
+  font-weight: 600;
+  border-bottom: 2px solid currentColor;
+}
+
+.navBtn {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* Theme-dependent button styles using :global() to target the global theme class */
+:global(.theme-light) .navBtn {
+  color: #0d3b66;
+  border-color: #0d3b66;
+}
+
+:global(.theme-light) .navBtn:hover {
+  background: rgba(13, 59, 102, 0.12);
+}
+
+:global(.theme-dark) .navBtn {
+  color: #cfe2ff;
+  border-color: #cfe2ff;
+}
+
+:global(.theme-dark) .navBtn:hover {
+  background: rgba(207, 226, 255, 0.15);
+}
+
+.navLoginBtn {
+  font-weight: 600;
+}
+
+.navCounter {
+  font-size: 0.85rem;
+}

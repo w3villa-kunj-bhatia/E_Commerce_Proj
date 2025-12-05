@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUserDataAndLogin } from "../redux/authSlice.js";
+import styles from "./LoginPage.module.css";
+import appStyles from "../App.module.css"; 
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -27,19 +29,17 @@ function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // 1. Dispatch action to set login state and store the username
+    // Simulate successful login and store username
     dispatch(setUserDataAndLogin({ username: formData.username }));
-
-    // 2. Redirect to dashboard
     navigate("/dashboard", { replace: true });
   };
 
   return (
-    <div className="login-container">
-      <div className="card login-form-card">
-        <h1>Login / Register</h1>
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="form-group">
+    <div className={styles.loginContainer}>
+      <div className={`${appStyles.card} ${styles.loginFormCard}`}>
+        <h1 className={styles.loginForm}>Login/Registration</h1>
+        <form onSubmit={handleSubmit} className={styles.loginForm}>
+          <div className={styles.formGroup}>
             <label htmlFor="fullName">Full Name</label>
             <input
               id="fullName"
@@ -51,7 +51,7 @@ function LoginPage() {
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="username">Username</label>
             <input
               id="username"
@@ -63,7 +63,7 @@ function LoginPage() {
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="age">Age</label>
             <input
               id="age"
@@ -75,7 +75,7 @@ function LoginPage() {
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="email">Email</label>
             <input
               id="email"
@@ -87,7 +87,7 @@ function LoginPage() {
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="industry">Industry</label>
             <select
               id="industry"
@@ -106,7 +106,7 @@ function LoginPage() {
 
           <button
             type="submit"
-            className="nav-btn nav-login-btn form-submit-btn"
+            className={`${appStyles.navBtn} ${appStyles.navLoginBtn} ${styles.formSubmitBtn}`}
           >
             Submit & Login
           </button>

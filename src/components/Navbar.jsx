@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/authSlice.js";
+import styles from "./Navbar.module.css";
 
 function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -20,16 +21,18 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar">
-      <div className="nav-left">
-        <NavLink to="/" className="nav-logo">
+    <nav className={styles.navbar}>
+      <div className={styles.navLeft}>
+        <NavLink to="/" className={styles.navLogo}>
           E Commerce Project
         </NavLink>
 
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "nav-link nav-link-active" : "nav-link"
+            isActive
+              ? `${styles.navLink} ${styles.navLinkActive}`
+              : styles.navLink
           }
         >
           Home
@@ -38,7 +41,9 @@ function Navbar() {
         <NavLink
           to="/dashboard"
           className={({ isActive }) =>
-            isActive ? "nav-link nav-link-active" : "nav-link"
+            isActive
+              ? `${styles.navLink} ${styles.navLinkActive}`
+              : styles.navLink
           }
         >
           Dashboard
@@ -47,29 +52,33 @@ function Navbar() {
         <NavLink
           to="/products"
           className={({ isActive }) =>
-            isActive ? "nav-link nav-link-active" : "nav-link"
+            isActive
+              ? `${styles.navLink} ${styles.navLinkActive}`
+              : styles.navLink
           }
         >
           Products
         </NavLink>
       </div>
 
-      <div className="nav-right">
-        {/* Display username AND counter side-by-side when logged in */}
+      <div className={styles.navRight}>
         {isLoggedIn ? (
           <>
-            <span className="nav-counter">Logged in as: {username}</span>
-            <span className="nav-counter">Counter: {counterValue}</span>
+            <span className={styles.navCounter}>Logged in as: {username}</span>
+            <span className={styles.navCounter}>Counter: {counterValue}</span>
           </>
         ) : (
-          <span className="nav-counter">Counter : {counterValue}</span>
+          <span className={styles.navCounter}>Counter : {counterValue}</span>
         )}
 
-        <button onClick={toggleTheme} className="nav-btn">
+        <button onClick={toggleTheme} className={styles.navBtn}>
           Theme: {theme === "light" ? "Light" : "Dark"}
         </button>
 
-        <button onClick={handleAuthClick} className="nav-btn nav-login-btn">
+        <button
+          onClick={handleAuthClick}
+          className={`${styles.navBtn} ${styles.navLoginBtn}`}
+        >
           {isLoggedIn ? "Logout" : "Login"}
         </button>
       </div>

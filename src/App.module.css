@@ -1,0 +1,38 @@
+/* src/App.module.css */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  padding: 1rem 2rem;
+}
+
+/* Shared Card and Button Row styles */
+.card {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  margin-top: 1rem;
+}
+
+.btnRow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btnRow button {
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+}
+
+/* Theme-dependent card styles using :global() to target the global theme class */
+:global(.theme-dark) .card {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+:global(.theme-light) .card {
+  background-color: rgba(255, 255, 255, 0.8);
+}
