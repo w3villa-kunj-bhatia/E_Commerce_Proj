@@ -8,10 +8,20 @@ function Products() {
   const { items, status, error } = useSelector((state) => state.products);
 
   useEffect(() => {
+    // 1. Create the AbortController instance
+    const controller = new AbortController();
+
     if (status === "idle") {
-      dispatch(fetchProducts());
+      // 2. Dispatch the thunk, passing the AbortSignal
+      dispatch(fetchProducts(null, { signal: controller.signal }));
     }
-  }, [dispatch, status]);
+
+    // 3. Cleanup function: runs on component unmount
+    return () => {
+      // Cancel the running request when component unmounts
+      controller.abort(); 
+    };
+  }, [dispatch]); // Keep dependencies minimal to prevent premature cancellation loops
 
   return (
     <div>
