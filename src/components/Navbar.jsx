@@ -3,6 +3,7 @@ import { useTheme } from "../context/ThemeContext.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/authSlice.js";
 import styles from "./Navbar.module.css";
+import { useCallback } from "react"; 
 
 function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -12,13 +13,13 @@ function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleAuthClick = () => {
+const handleAuthClick = useCallback(() => { 
     if (isLoggedIn) {
       dispatch(logout());
     } else {
       navigate("/login");
     }
-  };
+  }, [isLoggedIn, dispatch, navigate]); 
 
   return (
     <nav className={styles.navbar}>

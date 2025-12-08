@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./ProductList.module.css";
+import { memo } from "react"; 
 
 function ProductList({ products }) {
   if (!products || products.length === 0) {
@@ -19,7 +20,6 @@ function ProductList({ products }) {
             alt={product.title}
             className={styles.productImage}
           />
-
           <h3>{product.title}</h3>
           <p>${product.price}</p>
         </Link>
@@ -28,4 +28,4 @@ function ProductList({ products }) {
   );
 }
 
-export default ProductList;
+export default memo(ProductList);
