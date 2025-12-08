@@ -19,15 +19,28 @@ function Products() {
     // 3. Cleanup function: runs on component unmount
     return () => {
       // Cancel the running request when component unmounts
-      controller.abort(); 
+      controller.abort();
     };
   }, [dispatch]); // Keep dependencies minimal to prevent premature cancellation loops
+
+  // --- CLS FIX: Use conditional rendering to show skeleton/placeholder UI ---
+  // The ProductList component handles an empty 'products' array by displaying
+  // "No products found." wrapped in the main grid structure, which reserves space.
+  if (status === "loading" || status === "idle") {
+    return (
+      <div>
+        <h1>Products</h1>
+        <p>Loading products...</p>
+        {/* Render ProductList with an empty array to show the skeleton/placeholder */}
+        <ProductList products={[]} />
+      </div>
+    );
+  }
 
   return (
     <div>
       <h1>Products</h1>
 
-      {status === "loading" && <p>Loading products...</p>}
       {status === "failed" && <p>Error: {error}</p>}
       {status === "succeeded" && <ProductList products={items} />}
     </div>
