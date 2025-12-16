@@ -1,0 +1,105 @@
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownButton {
+  /* Basic Button Styling */
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.85rem; /* Match Navbar button size for consistency */
+
+  /* Inherit colors from parent (Navbar) */
+  border: 1px solid currentColor;
+  background-color: transparent;
+  color: inherit;
+}
+
+/* Accessible Focus Styles (Crucial for a11y) */
+.dropdownButton:focus-visible {
+  outline: 2px solid #0d3b66; /* Light theme primary focus color */
+  outline-offset: 2px;
+}
+
+/* Theme-dependent button color (Reusing Navbar colors) */
+:global(.theme-light) .dropdownButton:hover {
+  background: rgba(13, 59, 102, 0.12);
+}
+:global(.theme-dark) .dropdownButton {
+  border-color: #cfe2ff;
+  color: #cfe2ff;
+}
+:global(.theme-dark) .dropdownButton:focus-visible {
+  outline-color: #20c997; /* High-contrast focus for dark mode */
+}
+:global(.theme-dark) .dropdownButton:hover {
+  background: rgba(207, 226, 255, 0.15);
+}
+
+/* Menu List Styles */
+.menuList {
+  position: absolute;
+  top: 100%; /* Position right below the button */
+
+  /* --- MODIFIED FOR CENTERING --- */
+  left: 50%; /* Start the menu at the horizontal center of the button */
+  transform: translateX(
+    -50%
+  ); /* Shift the menu left by 50% of its own width to center it */
+
+  z-index: 10; /* Ensure it appears above other content */
+
+  /* --- MODIFIED FOR BIGGER SIZE --- */
+  min-width: 200px; /* Increased size (was 150px) */
+
+  margin: 0.25rem 0 0 0;
+  padding: 0;
+  list-style: none;
+  border-radius: 4px;
+
+  /* Theme-dependent list styling */
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+:global(.theme-dark) .menuList {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Menu Item Styles */
+.menuItemLink {
+  display: block; /* Make the whole <li> clickable/focusable */
+
+  /* --- MODIFIED FOR BIGGER SIZE --- */
+  padding: 0.75rem 1.25rem; /* Increased padding (was 0.5rem 1rem) */
+
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.9rem;
+  white-space: nowrap; /* Prevent items from wrapping */
+}
+
+/* Hover and Focus for Menu Items (Crucial for a11y) */
+.menuItemLink:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.menuItemLink:focus-visible {
+  outline: none;
+  /* Use a high-contrast background color on focus */
+  background-color: rgba(13, 59, 102, 0.12);
+}
+
+:global(.theme-dark) .menuItemLink:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(.theme-dark) .menuItemLink:focus-visible {
+  background-color: rgba(207, 226, 255, 0.15);
+}
