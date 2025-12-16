@@ -23,16 +23,15 @@ function Products() {
     };
   }, [dispatch]); // Keep dependencies minimal to prevent premature cancellation loops
 
-  // --- CLS FIX: Use conditional rendering to show skeleton/placeholder UI ---
-  // The ProductList component handles an empty 'products' array by displaying
-  // "No products found." wrapped in the main grid structure, which reserves space.
+  // --- CLS Fix (Original comment) ---
+  // [MODIFIED] Removed the ProductList call in the loading state,
+  // as it caused the unwanted "No products found." message to appear.
   if (status === "loading" || status === "idle") {
     return (
       <div>
         <h1>Products</h1>
         <p>Loading products...</p>
-        {/* Render ProductList with an empty array to show the skeleton/placeholder */}
-        <ProductList products={[]} />
+        {/* Removed: <ProductList products={[]} /> */}
       </div>
     );
   }
