@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../redux/productsSlice.js";
 import styles from "./ProductDetails.module.css";
+import DOMPurify from "dompurify";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -21,7 +22,7 @@ function ProductDetails() {
     // 3. Cleanup function: runs on component unmount
     return () => {
       // Cancel the running request when component unmounts.
-      controller.abort(); 
+      controller.abort();
     };
   }, [dispatch]); // Keep dependencies minimal to prevent premature cancellation loops
 
@@ -44,6 +45,9 @@ function ProductDetails() {
     );
   }
 
+  // Ensures any HTML content is safe before rendering.
+  const sanitizedDescription = DOMPurify.sanitize(product.description);
+
   return (
     <div>
       <h1>Product Details</h1>
@@ -64,7 +68,9 @@ function ProductDetails() {
             <strong>Category:</strong> {product.category}
           </p>
           <p>
-            <strong>Description:</strong> {product.description}
+            <strong>Description:</strong>
+            {/* [MODIFIED] Use dangerouslySetInnerHTML with the sanitized content */}
+            <span dangerouslySetInnerHTML={{ __html: sanitizedDescription }} />
           </p>
           <Link to="/products">Back to products</Link>
         </div>

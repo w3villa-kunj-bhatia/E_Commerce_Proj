@@ -13,9 +13,11 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.0",
     "@testing-library/react": "^16.3.0",
+    "dompurify": "^3.3.1",
     "jest": "^30.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-helmet-async": "^2.0.5",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.10.0"
   },

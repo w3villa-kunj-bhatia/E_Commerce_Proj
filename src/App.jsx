@@ -1,5 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react"; 
+import { lazy, Suspense } from "react";
+import { Helmet } from "react-helmet-async";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+
 import Navbar from "./components/Navbar.jsx";
 import styles from "./App.module.css";
 
@@ -12,15 +15,47 @@ const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 function App() {
   return (
     <div className={styles.app}>
+      <Helmet>
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self' https://fakestoreapi.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://fakestoreapi.com; font-src 'self';"
+        />
+        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+        <meta name="referrer" content="no-referrer" />
+        <title>E Commerce Project</title>
+      </Helmet>
+
       <Navbar />
       <main className={styles.main}>
-        {/* Wrap Routes with Suspense, providing a fallback UI */}
         <Suspense fallback={<div>Loading page...</div>}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/:id" element={<ProductDetails />} />
+
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/products"
+              element={
+                <ProtectedRoute>
+                  <Products />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/products/:id"
+              element={
+                <ProtectedRoute>
+                  <ProductDetails />
+                </ProtectedRoute>
+              }
+            />
+
             <Route path="/login" element={<LoginPage />} />
           </Routes>
         </Suspense>
