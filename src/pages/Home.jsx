@@ -17,6 +17,10 @@ function Home() {
         logging in, then try visiting Home again to see the redirect to the
         Dashboard.
       </p>
+      <h3>
+        You cannot access the Dashboard or Products page unless you are logged
+        in.
+      </h3>
     </div>
   );
 }
