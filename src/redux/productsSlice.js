@@ -1,11 +1,9 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-// Thunk to fetch products
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (_, { signal }) => {
-    // Pass the signal to the fetch call so it can be aborted
-    const res = await fetch("https://fakestoreapi.com/products", { signal });
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+    const res = await fetch(`${baseUrl}/products`, { signal });
+
     if (!res.ok) {
       throw new Error("Failed to fetch products");
     }
@@ -34,7 +32,7 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         // IMPORTANT: Check for and ignore the AbortError from cancellation
-        if (action.error.name === 'AbortError') {
+        if (action.error.name === "AbortError") {
           return;
         }
         state.status = "failed";
