@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
-
+import NotFound from "./pages/NotFound.jsx";
 import Navbar from "./components/Navbar.jsx";
 import styles from "./App.module.css";
 
@@ -11,6 +11,7 @@ const Dashboard = lazy(() => import("./pages/Dashboard.jsx"));
 const Products = lazy(() => import("./pages/Products.jsx"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails.jsx"));
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
+
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
             />
 
             <Route path="/login" element={<LoginPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>
