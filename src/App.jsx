@@ -18,9 +18,7 @@ function App() {
       <Helmet>
         <meta
           httpEquiv="Content-Security-Policy"
-          content={`default-src 'self' ${
-            import.meta.env.VITE_API_BASE_URL
-          }; ...`}
+          content="default-src 'self' https://fakestoreapi.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://fakestoreapi.com; font-src 'self';"
         />
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta name="referrer" content="no-referrer" />
